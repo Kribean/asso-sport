@@ -1,0 +1,502 @@
+[
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Hommes",
+        "weight": "≥ 57 kg",
+        "weight_min": 57,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Femmes",
+        "weight": "≥ 34",
+        "weight_min": 34,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Hommes",
+        "weight": "≥ 53",
+        "weight_min": 53,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Femmes",
+        "weight": "≥ 33",
+        "weight_min": 33,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Hommes",
+        "weight": "≥ 50",
+        "weight_min": 50,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Femmes",
+        "weight": "≥ 30",
+        "weight_min": 30,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Hommes",
+        "weight": "≥ 46",
+        "weight_min": 46,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Femmes",
+        "weight": "≥ 27",
+        "weight_min": 27,
+        "weight_max": null,
+        "indice": 5
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Hommes",
+        "weight": "≥46",
+        "weight_min": 46,
+        "weight_max": null,
+        "indice": 4
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Femmes",
+        "weight": "≥27",
+        "weight_min": 27,
+        "weight_max": null,
+        "indice": 4
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Hommes",
+        "weight": "41-45",
+        "weight_min": 41,
+        "weight_max": 45,
+        "indice": 4
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Femmes",
+        "weight": "25-26",
+        "weight_min": 25,
+        "weight_max": 26,
+        "indice": 4
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Hommes",
+        "weight": "47-49",
+        "weight_min": 47,
+        "weight_max": 49,
+        "indice": 4
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Femmes",
+        "weight": "27-29",
+        "weight_min": 27,
+        "weight_max": 29,
+        "indice": 4
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Hommes",
+        "weight": "50-52",
+        "weight_min": 50,
+        "weight_max": 52,
+        "indice": 4
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Femmes",
+        "weight": "30-32",
+        "weight_min": 30,
+        "weight_max": 32,
+        "indice": 4
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Hommes",
+        "weight": "51-56",
+        "weight_min": 51,
+        "weight_max": 56,
+        "indice": 4
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Femmes",
+        "weight": "31-33",
+        "weight_min": 31,
+        "weight_max": 33,
+        "indice": 4
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Hommes",
+        "weight": "52-56 kg",
+        "weight_min": 52,
+        "weight_max": 56,
+        "indice": 4
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Femmes",
+        "weight": "31-33",
+        "weight_min": 31,
+        "weight_max": 33,
+        "indice": 4
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Hommes",
+        "weight": "38-41",
+        "weight_min": 38,
+        "weight_max": 41,
+        "indice": 3
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Femmes",
+        "weight": "22-24",
+        "weight_min": 22,
+        "weight_max": 24,
+        "indice": 3
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Hommes",
+        "weight": "44-46",
+        "weight_min": 44,
+        "weight_max": 46,
+        "indice": 3
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Femmes",
+        "weight": "24-26",
+        "weight_min": 24,
+        "weight_max": 26,
+        "indice": 3
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Hommes",
+        "weight": "46-50",
+        "weight_min": 46,
+        "weight_max": 50,
+        "indice": 3
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Femmes",
+        "weight": "28-30",
+        "weight_min": 28,
+        "weight_max": 30,
+        "indice": 3
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Hommes",
+        "weight": "48-51",
+        "weight_min": 48,
+        "weight_max": 51,
+        "indice": 3
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Femmes",
+        "weight": "29-30",
+        "weight_min": 29,
+        "weight_max": 30,
+        "indice": 3
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Hommes",
+        "weight": "48-51 kg",
+        "weight_min": 48,
+        "weight_max": 51,
+        "indice": 3
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Femmes",
+        "weight": "29-30",
+        "weight_min": 29,
+        "weight_max": 30,
+        "indice": 3
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Hommes",
+        "weight": "34-37",
+        "weight_min": 34,
+        "weight_max": 37,
+        "indice": 2
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Femmes",
+        "weight": "20-21",
+        "weight_min": 20,
+        "weight_max": 21,
+        "indice": 2
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Hommes",
+        "weight": "40-43",
+        "weight_min": 40,
+        "weight_max": 43,
+        "indice": 2
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Femmes",
+        "weight": "21-23",
+        "weight_min": 21,
+        "weight_max": 23,
+        "indice": 2
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Hommes",
+        "weight": "41-46",
+        "weight_min": 41,
+        "weight_max": 46,
+        "indice": 2
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Femmes",
+        "weight": "24-26",
+        "weight_min": 24,
+        "weight_max": 26,
+        "indice": 2
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Hommes",
+        "weight": "44-46",
+        "weight_min": 44,
+        "weight_max": 46,
+        "indice": 2
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Femmes",
+        "weight": "25-27",
+        "weight_min": 25,
+        "weight_max": 27,
+        "indice": 2
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Hommes",
+        "weight": "45-47 kg",
+        "weight_min": 45,
+        "weight_max": 47,
+        "indice": 2
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Femmes",
+        "weight": "25-28",
+        "weight_min": 25,
+        "weight_max": 28,
+        "indice": 2
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Hommes",
+        "weight": "≤ 33",
+        "weight_min": null,
+        "weight_max": 33,
+        "indice": 1
+    },
+    {
+        "age": "61 ans et +",
+        "age_min": 61,
+        "age_max": null,
+        "gender": "Femmes",
+        "weight": "≤ 19",
+        "weight_min": null,
+        "weight_max": 19,
+        "indice": 1
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Hommes",
+        "weight": "≤ 38",
+        "weight_min": null,
+        "weight_max": 38,
+        "indice": 1
+    },
+    {
+        "age": "51-60 ans",
+        "age_min": 51,
+        "age_max": 60,
+        "gender": "Femmes",
+        "weight": "≤ 20",
+        "weight_min": null,
+        "weight_max": 20,
+        "indice": 1
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Hommes",
+        "weight": "≤ 40",
+        "weight_min": null,
+        "weight_max": 40,
+        "indice": 1
+    },
+    {
+        "age": "41-50 ans",
+        "age_min": 41,
+        "age_max": 50,
+        "gender": "Femmes",
+        "weight": "≤ 23",
+        "weight_min": null,
+        "weight_max": 23,
+        "indice": 1
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Hommes",
+        "weight": "≤ 43",
+        "weight_min": null,
+        "weight_max": 43,
+        "indice": 1
+    },
+    {
+        "age": "31-40 ans",
+        "age_min": 31,
+        "age_max": 40,
+        "gender": "Femmes",
+        "weight": "≤ 24",
+        "weight_min": null,
+        "weight_max": 24,
+        "indice": 1
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Hommes",
+        "weight": "≤ 44 kg",
+        "weight_min": null,
+        "weight_max": 44,
+        "indice": 1
+    },
+    {
+        "age": "21-30 ans",
+        "age_min": 21,
+        "age_max": 30,
+        "gender": "Femmes",
+        "weight": "≤ 29",
+        "weight_min": null,
+        "weight_max": 29,
+        "indice": 1
+    }
+]

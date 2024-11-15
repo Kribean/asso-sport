@@ -1,0 +1,52 @@
+[
+    {
+        "gender": "Hommes",
+        "description": "Vous touchez le sol les doigts fermés",
+        "note": 5
+    },
+    {
+        "gender": "Hommes",
+        "description": "Le bout des doigts touche le sol",
+        "note": 4
+    },
+    {
+        "gender": "Hommes",
+        "description": "Le bout des doigts touche le cou de pied",
+        "note": 3
+    },
+    {
+        "gender": "Hommes",
+        "description": "Le bout des doigts atteint le bas des tibias",
+        "note": 2
+    },
+    {
+        "gender": "Hommes",
+        "description": "Le bout des doigts atteint le milieu des tibias",
+        "note": 1
+    },
+    {
+        "gender": "Femmes",
+        "description": "Les paumes des mains touchent le sol",
+        "note": 5
+    },
+    {
+        "gender": "Femmes",
+        "description": "Vous touchez le sol les poings fermés",
+        "note": 4
+    },
+    {
+        "gender": "Femmes",
+        "description": "Le bout des doigts touche le sol",
+        "note": 3
+    },
+    {
+        "gender": "Femmes",
+        "description": "Le bout des doigts touche le cou de pied",
+        "note": 2
+    },
+    {
+        "gender": "Femmes",
+        "description": "Le bout des doigts atteint le bas des tibias",
+        "note": 1
+    }
+]
