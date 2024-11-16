@@ -1,10 +1,12 @@
 import CreatePatient from "./CreatePatient";
 import IMCCompo from "./IMCCompo";
+import ListAllPatients from "./ListAllPatients";
 
 const FormPersona = ({height,setHeight, age, weight, gender, setAge, setWeight, setGender,email,lastname,firstname,setEmail,setLastname,setFirstname }) => {
 
   return (
   <div>
+    <ListAllPatients/>
 <CreatePatient
 age={age}
 weight={weight}
