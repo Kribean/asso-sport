@@ -4,25 +4,33 @@ const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height
       };
     
     return(
-        <div className="flex flex-col w-full gap-4 p-4">
-        <h1 className="text-xl font-extrabold">Créer un nouveau patient</h1>
-        <label className="input input-bordered flex items-center gap-2">
+        <div className="flex flex-col w-full gap-4 p-4 ">
+                <details className="collapse bg-base-200 w-full gap-4">
+      <summary className="collapse-title text-md font-medium w-full gap-4">
+      Créer un nouveau patient
+      </summary>
+<div className="flex flex-col w-full gap-2">
+<p>Email</p>
+<label className="input input-bordered flex items-center gap-2">
           <input type="text" className="grow" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         </label>
+
+        <p>Nom de famille</p>
         <label className="input input-bordered flex items-center gap-2">
           <input type="text" 
           className="grow" 
           placeholder="Nom de famille"
           value={lastname} onChange={(e)=>{setLastname(e.target.value)}} />
         </label>
+        <p>Prénom</p>
         <label className="input input-bordered flex items-center gap-2">
           <input type="text" 
           className="grow" 
           placeholder="Prénom"
           value={firstname} onChange={(e)=>{setFirstname(e.target.value)}} />
         </label>
+        <p>Genre</p>
         <label>
-          Genre:
           <select className="input input-bordered flex items-center gap-2" value={gender} onChange={handleGenderChange}>
             <option value="">Sélectionnez</option>
             <option value="Hommes">Homme</option>
@@ -37,7 +45,7 @@ const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height
           value={age}
           onChange={(e) => setAge(e.target.value)}
         />
-        <p>Poids</p>
+        <p>Poids en kg</p>
         <input
         className="input input-bordered flex items-center gap-2"
           type="number"
@@ -45,6 +53,7 @@ const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
         />
+        <p>Taille en cm</p>
         <input
         className="input input-bordered flex items-center gap-2"
           type="number"
@@ -53,6 +62,9 @@ const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height
           value={height}
           onChange={(e) => setHeight(e.target.value)}
         />
+        <button className="btn btn-primary m-2"> Créer patient</button>
+</div>
+        </details>
       </div>
     )
 }

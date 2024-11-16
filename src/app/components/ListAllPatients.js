@@ -1,32 +1,74 @@
-"use client"
+"use client";
 
-import CardPatient from "./CardPatient"
+import { useEffect, useState } from "react";
+import CardPatient from "./CardPatient";
 
+const ListAllPatients = ({isPatientChoose,setIsPatientChoose,fillFormASAP}) => {
+    const [filt,setFilt]=useState("")
+  const [data, setData] = useState([]);
+  const [dataRaw, setDataRaw] = useState([]);
+  useEffect(() => {
+    
+    const dataR = [
+        { lastname: "jjj", firstname: "pppp", email: "ramael.bruno@gmail.com" },
+        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
+        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
+        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
+        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
+      ];
+      setDataRaw(dataR)
+      setData(dataR)
+      console.log("oooo",data)
 
+  }, []);
 
-const ListAllPatients = ()=>{
-const data=[{lastname:"jjj",firstname:"pppp",email:"oooooo"}]
-    return(
-        <details className="collapse bg-base-200">
-  <summary className="collapse-title text-xl font-medium">Utiliser un patient existant</summary>
-  <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-                <p>Recherche par email</p>
-                <input type="text"/>
-            </div>
-{data.map((e,index)=>{
-    return <CardPatient
-    key={index}
-nom={e.lastname}
-prenom={e.firstname}
-email={e.email}
-/>
-})
+  const handleFilter = (x)=>{
 
-}
+    let dataNew = dataRaw.filter((e)=>{
+        return e.email?.includes(x)})
+
+    setData(dataNew)
+  }
+
+  useEffect(()=>{
+
+    filt?.length>0&&handleFilter(filt)
+  },[filt])
+  return (
+    <details className="collapse bg-base-200">
+      <summary className="collapse-title text-md font-medium">
+        Cliquer et choisisser un patient existant{" "}
+      </summary>
+      <div className="flex flex-col gap-4 bg-[#d9f99d]">
+        <div className="flex flex-col gap-2 m-4">
+          <p>Recherche par email</p>
+          <div className="flex flex-row gap-4">
+          <input type="text" className="input input-bordered w-full max-w-xs" value={filt} onChange={(e)=>{setFilt(e.target.value)}} />
+          <button className="btn btn-warning btn-sm">Réinitialiser</button>
+          </div>
         </div>
-</details>
-    )
-}
+<div className=" flex flex-col gap-2 m-4">
+{data.map((e, index) => {
+          return (
+            <CardPatient
+              key={index}
+              lastnamePrim={e?.lastname}
+              firstname={e?.firstname}
+              emailPrim={e?.email}
+              genderPrim={e?.gender}
+              heightPrim={e?.height}
+              weightPrim={e?.weight}
+              isPatientChoose={isPatientChoose}
+              setIsPatientChoose={setIsPatientChoose}
+              fillFormASAP={fillFormASAP}
+              resetForm={()=>{}}
+            />
+          );
+        })}
+</div>
+      </div>
+    </details>
+  );
+};
 
-export default ListAllPatients
+export default ListAllPatients;

@@ -8,6 +8,7 @@ const FormFifthSixMin= ({distanceFifth,setDistanceFifth,indiceFifth})=>{
 
             <input className="input input-bordered flex items-center gap-2" type="number" value={distanceFifth} onChange={(e)=>{return setDistanceFifth(e.target.value)}}/>
         <NoteResult note={indiceFifth}/>
+        <button className="btn btn-success">Valider le résultat</button>
         </div>
     )
 }

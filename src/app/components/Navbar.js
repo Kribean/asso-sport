@@ -1,13 +1,22 @@
 import Image from "next/image";
 
-export default function Navbar(){
+export default function Navbar({firstnameAcc,lastnameAcc}){
+
+const handleDeconnect =()=>{
+
+    localStorage.removeItem("apasambasa")
+    window.location.reload();
+
+}
 
     return(
-        <div className="navbar bg-neutral text-neutral-content">
-  <div className="flex-1">
+        <div className="flex flex-col w-full bg-neutral text-neutral-content p-4">
+
+<div className="flex flex-row justify-between items-between">
+<div className="flex flex-row">
     <p className="text-xl font-bold">Application</p>
   </div>
-  <div className="flex-none">
+  <div className="flex flex-row">
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
@@ -28,10 +37,12 @@ export default function Navbar(){
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><button className="btn btn-error"> Déconnexion</button></li>
+        <li><button className="btn btn-error" onClick={handleDeconnect}> Déconnexion</button></li>
       </ul>
     </div>
   </div>
+</div>
+{(lastnameAcc&&firstnameAcc) &&<p>Bienvenue,{lastnameAcc} {firstnameAcc}  </p>}
 </div>
     )
 }

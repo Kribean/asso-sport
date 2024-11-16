@@ -40,6 +40,7 @@ function FormFlexion({gender}) {
       <div className='w-full text-xs lg:text-lg '>
       {note !== null &&<NoteResult note={note}/>}
       </div>
+      <button className="btn btn-success">Valider le résultat</button>
     </div>
   );
 }

@@ -1,12 +1,15 @@
 import CreatePatient from "./CreatePatient";
-import IMCCompo from "./IMCCompo";
 import ListAllPatients from "./ListAllPatients";
 
-const FormPersona = ({height,setHeight, age, weight, gender, setAge, setWeight, setGender,email,lastname,firstname,setEmail,setLastname,setFirstname }) => {
+const FormPersona = ({height,setHeight, age, weight, gender, setAge, setWeight, setGender,email,lastname,firstname,setEmail,setLastname,setFirstname,isPatientChoose,setIsPatientChoose,fillFormASAP }) => {
 
   return (
-  <div>
-    <ListAllPatients/>
+  <div className="flex flex-col w-full">
+    <ListAllPatients
+                            isPatientChoose={isPatientChoose}
+                            setIsPatientChoose={setIsPatientChoose}
+                            fillFormASAP={fillFormASAP}
+    />
 <CreatePatient
 age={age}
 weight={weight}
@@ -22,7 +25,7 @@ setLastname={setLastname}
 setFirstname={setFirstname}
 setHeight={setHeight}
 height={height}/>
-<IMCCompo weight={weight} height={height} />
+
 </div>
   );
 };

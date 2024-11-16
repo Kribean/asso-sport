@@ -10,6 +10,8 @@ import FormFourthDebout from "./components/FormFourthDebout";
 import FormFifthSixMin from "./components/FormFifthSixMin";
 import LoginComp from "./components/LoginComp";
 import Navbar from "./components/Navbar";
+import CardPatient from "./components/CardPatient";
+import IMCCompo from "./components/IMCCompo";
 
 export default function Home() {
   const [age, setAge] = useState(0);
@@ -27,7 +29,36 @@ export default function Home() {
   const [firstnameAcc, setFirstnameAcc] = useState("");
   const [lastnameAcc, setLastnameAcc] = useState("");
   const [isConnected, setIsconnected] = useState(false);
+  const [isPatientChoose, setIsPatientChoose] = useState(false);
 
+const resetForm=()=>{
+   setAge(0);
+   setWeight(0);
+   setGender("");
+   setIndiceThird(-1);
+   setIndiceFifth(-1);
+   setListFourthScore([]);
+   setScoreFourth("");
+   setDistanceFifth(0);
+   setHeight(0);
+   setFirstname("");
+   setLastname("");
+   setEmail("");
+   setIsPatientChoose(false);
+}
+  const fillFormASAP = (ag,wg,hg,gd,em,fnam,lasnam,indT,indF,distF,scF)=>{
+    setAge(ag)
+    setWeight(wg)
+    setGender(gd)
+    setHeight(hg)
+    setEmail(em)
+    setFirstname(fnam)
+    setLastname(lasnam)
+    setIndiceThird(indT??-1)
+    setIndiceFifth(indF??-1)
+    setDistanceFifth(distF??0)
+    setScoreFourth(scF??"")
+  }
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
       return el.gender === gender;
@@ -79,6 +110,15 @@ export default function Home() {
     const storeUsername = localStorage.getItem("apasambasa")
     if(storeUsername)
     {
+      try{
+const userJSON = JSON.parse(storeUsername)
+setFirstnameAcc(userJSON?.firstnameAcc)
+setLastnameAcc(userJSON?.lastnameAcc)
+      }catch(error){
+        console.log("erreur sur: ",error)
+      }
+      
+
       console.log("connected")
     }
   },[])
@@ -92,9 +132,22 @@ export default function Home() {
         setLastnameAcc={setLastnameAcc}
         setIsconnected={setIsconnected}/>
       ) : (
-        <><Navbar/>
+        <><Navbar lastnameAcc={lastnameAcc} firstnameAcc={firstnameAcc}/>
           <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-            <FormPersona
+            {isPatientChoose?
+                        <CardPatient
+                        lastnamePrim={lastname}
+                        firstnamePrim={firstname}
+                        emailPrim={email}
+                        genderPrim={gender}
+                        heightPrim={height}
+                        weightPrim={weight}
+                        isPatientChoose={isPatientChoose}
+                        setIsPatientChoose={setIsPatientChoose}
+                        fillFormASAP={()=>{}}
+                        resetForm={resetForm}
+                      />
+            :<FormPersona
               email={email}
               lastname={lastname}
               firstname={firstname}
@@ -109,7 +162,13 @@ export default function Home() {
               setGender={setGender}
               setHeight={setHeight}
               height={height}
+              isPatientChoose={isPatientChoose}
+              setIsPatientChoose={setIsPatientChoose}
+              fillFormASAP={fillFormASAP}
             />
+            }
+<div className="flex flex-col m-2 gap-4">
+<IMCCompo weight={weight} height={height} />
             <FormFlexion gender={gender} />
             <FormForceIso indiceThird={indiceThird} />
             <FormFourthDebout
@@ -122,6 +181,7 @@ export default function Home() {
               distanceFifth={distanceFifth}
               setDistanceFifth={setDistanceFifth}
             />
+</div>
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
         </>
