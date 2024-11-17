@@ -64,7 +64,7 @@ setNbrTestVal(val)
   const handleSendFormToClient = ()=>{
 
   }
-
+//reset le formulaire
   const resetForm = () => {
     setAge(0);
     setWeight(0);
