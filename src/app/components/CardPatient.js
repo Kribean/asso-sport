@@ -30,6 +30,9 @@ const handleChooseUser=()=>{
     const aut4="David"
     const aut5="Jhon"
     const descp=""
+    const etatSan={hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0}
+    const lieu="trois Ilets"
+    const tel="065325"
 
 
     fillFormASAP(
@@ -58,7 +61,10 @@ const handleChooseUser=()=>{
         aut3,
         aut4,
         aut5,
-        descp
+        descp,
+        etatSan,
+        lieu,
+        tel
       )
     setIsPatientChoose(true)
 }

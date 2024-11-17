@@ -19,6 +19,12 @@ const FormPersona = ({
   isPatientChoose,
   setIsPatientChoose,
   fillFormASAP,
+  etatSante,
+  setEtatSante,
+  lieu,
+  setLieu,
+  telephone,
+  setTelephone
 }) => {
   const dataR = [
     { lastname: "jjj", firstname: "pppp", email: "ramael.bruno@gmail.com" },
@@ -53,6 +59,12 @@ const FormPersona = ({
         dataR={dataR}
         isPatientChoose={isPatientChoose}
         setIsPatientChoose={setIsPatientChoose}
+        etatSante={etatSante}
+        setEtatSante={setEtatSante}
+        lieu={lieu}
+        setLieu={setLieu}
+        telephone={telephone}
+        setTelephone={setTelephone}
       />
     </div>
   );

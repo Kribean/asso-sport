@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  age               Int     @default(0)
+  weight            Float   @default(0.0)
+  gender            String  @default("")
+  indiceThird       Int     @default(-1)
+  indiceFour        Int     @default(-1)
+  indiceFifth       Int     @default(-1)
+  scoreFourth       String  @default("")
+  distanceFifth     Float   @default(0.0)
+  height            Float   @default(0.0)
+  firstname         String  @default("")
+  lastname          String  @default("")
+  email             String  @default("")
+  isPatientChoose   Boolean @default(false)
+  dynaWeight1       Float   @default(-1.0)
+  dynaWeight2       Float   @default(-1.0)
+  is1Validated      Boolean @default(false)
+  is2Validated      Boolean @default(false)
+  is3Validated      Boolean @default(false)
+  is4Validated      Boolean @default(false)
+  is5Validated      Boolean @default(false)
+  autor1            String  @default("")
+  autor2            String  @default("")
+  autor3            String  @default("")
+  autor4            String  @default("")
+  autor5            String  @default("")
+  description       String  @default("")
+}

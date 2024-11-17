@@ -35,6 +35,10 @@ export default function Home() {
   const [isConnected, setIsconnected] = useState(false);
   const [isPatientChoose, setIsPatientChoose] = useState(false);
   const [description, setDescription] = useState('');
+  //param santé
+  const [etatSante,setEtatSante]=useState({hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0})
+  const [lieu,setLieu]=useState("")
+  const [telephone,setTelephone]=useState("")
   //validation des 5 test
   const [is1Validated, setIs1Validated] = useState(true);
   const [is2Validated, setIs2Validated] = useState(true);
@@ -89,6 +93,9 @@ setNbrTestVal(val)
     setAutor4("");
     setAutor5("");
     setDescription('');
+    setEtatSante({hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
+    setLieu("");
+    setTelephone("");
   };
 const fillFormASAP = (
   ag, // âge
@@ -116,9 +123,10 @@ const fillFormASAP = (
   aut3,
   aut4,
   aut5,
-  descp
-
-
+  descp,
+  etatSan,
+  lieu,
+  tel
 ) => {
 
   setAge(ag??0);
@@ -147,6 +155,9 @@ const fillFormASAP = (
   setAutor4(aut4??"");
   setAutor5(aut5??"");
   setDescription(descp??'');
+  setEtatSante(etatSan??{hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
+  setLieu(lieu??"");
+  setTelephone(tel??"");
 };
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
@@ -318,6 +329,12 @@ const fillFormASAP = (
                 isPatientChoose={isPatientChoose}
                 setIsPatientChoose={setIsPatientChoose}
                 fillFormASAP={fillFormASAP}
+                etatSante={etatSante}
+                setEtatSante={setEtatSante}
+                lieu={lieu}
+                setLieu={setLieu}
+                telephone={telephone}
+                setTelephone={setTelephone}
               />
             )}
           </main>
