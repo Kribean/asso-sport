@@ -3,19 +3,12 @@
 import { useEffect, useState } from "react";
 import CardPatient from "./CardPatient";
 
-const ListAllPatients = ({isPatientChoose,setIsPatientChoose,fillFormASAP}) => {
+const ListAllPatients = ({isPatientChoose,setIsPatientChoose,fillFormASAP,dataR}) => {
     const [filt,setFilt]=useState("")
   const [data, setData] = useState([]);
   const [dataRaw, setDataRaw] = useState([]);
   useEffect(() => {
-    
-    const dataR = [
-        { lastname: "jjj", firstname: "pppp", email: "ramael.bruno@gmail.com" },
-        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-        { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-      ];
+  
       setDataRaw(dataR)
       setData(dataR)
       console.log("oooo",data)

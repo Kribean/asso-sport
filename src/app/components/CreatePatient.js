@@ -1,7 +1,25 @@
-const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height, setGender,email,lastname,firstname,setEmail,setLastname,setFirstname })=>{
+"use client"
+import { useState } from "react";
+
+const CreatePatient = ({setIsPatientChoose,isPatientChoose, age, weight, gender, setAge, setWeight,setHeight,height, setGender,email,lastname,firstname,setEmail,setLastname,setFirstname,dataR })=>{
+    const [patientExist,setPatientExist]=useState(false)
+    
     const handleGenderChange = (e) => {
         setGender(e.target.value);
       };
+
+
+      const handleCreatePat = ()=>{
+        const patientEx = dataR?.find((e)=>e.email === email)
+        if(patientEx)
+        {
+          setPatientExist(true)
+        }else{
+          setPatientExist(false)
+          setIsPatientChoose(true)
+        }
+
+      }
     
     return(
         <div className="flex flex-col w-full gap-4 p-4 ">
@@ -62,7 +80,7 @@ const CreatePatient = ({ age, weight, gender, setAge, setWeight,setHeight,height
           value={height}
           onChange={(e) => setHeight(e.target.value)}
         />
-        <button className="btn btn-primary m-2"> Créer patient</button>
+        <button className="btn btn-primary m-2" onClick={handleCreatePat}> Créer patient</button>
 </div>
         </details>
       </div>

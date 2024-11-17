@@ -4,8 +4,7 @@ import data from '../data/json/second_test.json'
 import NoteResult from './NoteResult';
 
 
-function FormFlexion({gender}) {
-  const [description, setDescription] = useState('');
+function FormFlexion({gender,is2Validated, setIs2Validated,autor2,setAutor2,description, setDescription}) {
   const [note, setNote] = useState(null);
 
   const filteredDescriptions = data
@@ -20,28 +19,50 @@ function FormFlexion({gender}) {
   };
 
   return (
-    <div className=' flex flex-col gap-2 items-center bg-white border border-gray-200 rounded-lg shadow p-2'>
-      <h2 className='text-lg lg:text-xl font-extrabold'>Deuxième test : Flexion du tronc en avant (souplesse avant debout)</h2>
-<div className='w-full text-xs lg:text-lg '>
-{gender && (
-        <label>
+<div className="collapse gap-2 items-center bg-white border border-gray-200 rounded-lg shadow p-2">
+  <input type="checkbox" className="peer" />
+  <div className="collapse-title text-md lg:text-xl font-extrabold  bg-gray-200">
+<div className=' flex flex-row justify-between'>
+<h2>
+    Deuxième test : Flexion du tronc en avant (souplesse avant debout)
+    </h2>
+    <div className='flex flex-col items-center justify-center'>
+{is2Validated&&autor2?<div className="badge badge-success gap-2">Test réalisé par {autor2}</div>:<div className="badge badge-warning gap-2">Test non réalisé</div> }
+    </div>
+</div>
+  </div>
+  <div className="collapse-content flex flex-col">
+    <div className="w-full text-xs lg:text-lg">
+      {gender && (
+<div className='flex flex-col gap-2'>
+<p className='text-lg font-bold'>
           Description:
-          <select className=' w-full break-all border border-gray-200 rounded-lg shadow'  value={description} onChange={handleDescriptionChange}>
+          </p>
+          <select
+            className="input input-bordered w-full break-all border border-gray-200 rounded-lg shadow"
+            value={description}
+            onChange={handleDescriptionChange}
+          >
             <option value="">Sélectionnez</option>
             {filteredDescriptions.map((desc, index) => (
-              <option className=' w-full break-all' key={index} value={desc}>
+              <option className="w-full break-all" key={index} value={desc}>
                 {desc}
               </option>
             ))}
           </select>
-        </label>
-      )}
 </div>
-      <div className='w-full text-xs lg:text-lg '>
-      {note !== null &&<NoteResult note={note}/>}
-      </div>
-      <button className="btn btn-success">Valider le résultat</button>
+      )}
     </div>
+    {description&&<>
+      <div className="flex flex-col items-center justify-center w-full text-xs lg:text-lg my-4">
+      {note !== null && <NoteResult note={note} />}
+    </div>
+   {is2Validated&&autor2? <button className="btn btn-warning">Modifier et Valider le résultat</button>:<button className="btn btn-success">Valider le résultat</button>}  
+    </>}
+
+  </div>
+</div>
+
   );
 }
 
