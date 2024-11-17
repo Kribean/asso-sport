@@ -10,7 +10,7 @@ function FormForceIso({indiceThird,is3Validated, setIs3Validated,autor3,setAutor
         <input type="checkbox" className="peer" />
         <div className="collapse-title text-md lg:text-xl font-extrabold  bg-gray-200">
         <div className=' flex flex-row justify-between'>
-        <h2 className='text-lg lg:text-xl font-extrabold'>Troisième test : Mesure de la force isométrique des muscles de la main et de l’avant bras ( force de préhension)</h2>
+        <h2 className='text-md lg:text-lg font-extrabold'>Troisième test : Mesure de la force isométrique des muscles de la main et de l’avant bras ( force de préhension)</h2>
     <div className='flex flex-col items-center justify-center'>
 {is3Validated&&autor3?<div className="badge badge-success gap-2 w-fit h-fit">Test réalisé par {autor3}</div>:<div className="badge badge-warning gap-2  w-fit h-fit">Test non réalisé</div> }
     </div>

@@ -23,11 +23,11 @@ function FormFlexion({gender,is2Validated, setIs2Validated,autor2,setAutor2,desc
   <input type="checkbox" className="peer" />
   <div className="collapse-title text-md lg:text-xl font-extrabold  bg-gray-200">
 <div className=' flex flex-row justify-between'>
-<h2>
+<h2 className='text-md lg:text-lg'>
     Deuxième test : Flexion du tronc en avant (souplesse avant debout)
     </h2>
     <div className='flex flex-col items-center justify-center'>
-{is2Validated&&autor2?<div className="badge badge-success gap-2">Test réalisé par {autor2}</div>:<div className="badge badge-warning gap-2">Test non réalisé</div> }
+{is2Validated&&autor2?<div className="badge badge-success gap-2 w-fit h-fit">Test réalisé par {autor2}</div>:<div className="badge badge-warning gap-2 w-fit h-fit">Test non réalisé</div> }
     </div>
 </div>
   </div>

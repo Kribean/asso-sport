@@ -12,6 +12,7 @@ import LoginComp from "./components/LoginComp";
 import Navbar from "./components/Navbar";
 import CardPatient from "./components/CardPatient";
 import IMCCompo from "./components/IMCCompo";
+import NbrTest from "./components/NbrTest";
 
 export default function Home() {
   const [age, setAge] = useState(0);
@@ -35,15 +36,30 @@ export default function Home() {
   const [isPatientChoose, setIsPatientChoose] = useState(false);
   const [description, setDescription] = useState('');
   //validation des 5 test
-  const [is1Validated, setIs1Validated] = useState(false);
-  const [is2Validated, setIs2Validated] = useState(false);
-  const [is3Validated, setIs3Validated] = useState(false);
-  const [is4Validated, setIs4Validated] = useState(false);
-  const [is5Validated, setIs5Validated] = useState(false);
+  const [is1Validated, setIs1Validated] = useState(true);
+  const [is2Validated, setIs2Validated] = useState(true);
+  const [is3Validated, setIs3Validated] = useState(true);
+  const [is4Validated, setIs4Validated] = useState(true);
+  const [is5Validated, setIs5Validated] = useState(true);
   const [autor1, setAutor1] = useState("");
   const [autor2, setAutor2] = useState("");
   const [autor3, setAutor3] = useState("");
   const [autor4, setAutor4] = useState("");
+  const [autor5, setAutor5] = useState("");
+  const [nbrTestVal,setNbrTestVal]=useState(0)
+
+  useEffect(()=>{
+
+    const convertFct = (x)=>{
+      return x?1:0
+    }
+    const val = convertFct(is1Validated)+convertFct(is2Validated)+convertFct(is3Validated)+convertFct(is4Validated)+convertFct(is5Validated)
+setNbrTestVal(val)
+  },[is1Validated,is2Validated,is3Validated,is4Validated,is5Validated])
+
+  const handleSendFormToClient = ()=>{
+
+  }
 
   const resetForm = () => {
     setAge(0);
@@ -71,33 +87,67 @@ export default function Home() {
     setAutor2("");
     setAutor3("");
     setAutor4("");
+    setAutor5("");
     setDescription('');
   };
-  const fillFormASAP = (
-    ag,
-    wg,
-    hg,
-    gd,
-    em,
-    fnam,
-    lasnam,
-    indT,
-    indF,
-    distF,
-    scF
-  ) => {
-    setAge(ag);
-    setWeight(wg);
-    setGender(gd);
-    setHeight(hg);
-    setEmail(em);
-    setFirstname(fnam);
-    setLastname(lasnam);
-    setIndiceThird(indT ?? -1);
-    setIndiceFifth(indF ?? -1);
-    setDistanceFifth(distF ?? 0);
-    setScoreFourth(scF ?? "");
-  };
+const fillFormASAP = (
+  ag, // âge
+  wg, // poids
+  gd,
+  ind3,
+  ind4,
+  ind5,
+  sc4,
+  dist5,
+  hg,
+  fnam,
+  lnam,
+  ema,
+  isptch,
+  dynW1,
+  dynW2,
+  is1V,
+  is2V,
+  is3V,
+  is4V,
+  is5V,
+  aut1,
+  aut2,
+  aut3,
+  aut4,
+  aut5,
+  descp
+
+
+) => {
+
+  setAge(ag??0);
+  setWeight(wg??0);
+  setGender(gd??"");
+  setIndiceThird(ind3??-1);
+  setIndiceFour(ind4??-1);
+  setIndiceFifth(ind5??-1);
+  setScoreFourth(sc4??"");
+  setDistanceFifth(dist5??0);
+  setHeight(hg??0);
+  setFirstname(fnam??"");
+  setLastname(lnam??"");
+  setEmail(ema??"");
+  setIsPatientChoose(isptch??false);
+  setDynaWeight1(dynW1??-1);
+  setDynaWeight2(dynW2??-1);
+  setIs1Validated(is1V??false);
+  setIs2Validated(is2V??false);
+  setIs3Validated(is3V??false);
+  setIs4Validated(is4V??false);
+  setIs5Validated(is5V??false);
+  setAutor1(aut1??"");
+  setAutor2(aut2??"");
+  setAutor3(aut3??"");
+  setAutor4(aut4??"");
+  setAutor5(aut5??"");
+  setDescription(descp??'');
+};
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
       return el.gender === gender;
@@ -210,6 +260,7 @@ export default function Home() {
                   resetForm={resetForm}
                 />
                 <div className="flex flex-col items-center justify-center m-2 gap-4">
+                  <NbrTest handleSendFormToClient={handleSendFormToClient} nbrTestVal={nbrTestVal}/>
                   <IMCCompo weight={weight} height={height} />
                   <FormFlexion
                     is2Validated={is2Validated}
@@ -236,8 +287,12 @@ export default function Home() {
                     scoreFourth={scoreFourth}
                     setScoreFourth={setScoreFourth}
                     indiceFour={indiceFour}
+                    is4Validated={is4Validated}
+                    autor4={autor4}
                   />
                   <FormFifthSixMin
+                  is5Validated={is5Validated}
+                  autor5={autor5}
                     indiceFifth={indiceFifth}
                     distanceFifth={distanceFifth}
                     setDistanceFifth={setDistanceFifth}

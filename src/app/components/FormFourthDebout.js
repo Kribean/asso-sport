@@ -7,7 +7,7 @@ const FormFourthDebout = ({listFourthScore,scoreFourth,setScoreFourth,indiceFour
         <input type="checkbox" className="peer" />
         <div className="collapse-title text-md lg:text-xl font-extrabold  bg-gray-200">
         <div className=' flex flex-row justify-between'>
-        <h2 className='text-lg lg:text-xl font-extrabold'>Quatrième test : Test debout - assis 30 secondes (force au niveau des membres inférieurs)</h2>
+        <h2 className='text-md lg:text-lg lg:text-xl font-extrabold'>Quatrième test : Test debout - assis 30 secondes (force au niveau des membres inférieurs)</h2>
     <div className='flex flex-col items-center justify-center'>
 {is4Validated&&autor4?<div className="badge badge-success gap-2 w-fit h-fit">Test réalisé par {autor4}</div>:<div className="badge badge-warning gap-2  w-fit h-fit">Test non réalisé</div> }
     </div>
