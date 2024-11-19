@@ -38,15 +38,38 @@ const CreatePatient = ({
     setGender(e.target.value);
   };
 
-  const handleCreatePat = () => {
-    const patientEx = dataR?.find((e) => e.email === email);
-    if (patientEx) {
-      setPatientExist(true);
-    } else {
+  fetch(`/api/patient`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Toujours spécifier le content-type pour JSON
+    },
+    body: JSON.stringify({
+      age,
+      weight,
+      gender,
+      email,
+      lastname,
+      firstname,
+      height,
+      etatSante,
+      lieu,
+      telephone,
+    }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json(); // Parse seulement si res.ok
+    })
+    .then((data) => {
       setPatientExist(false);
       setIsPatientChoose(true);
-    }
-  };
+    })
+    .catch((error) => {
+      console.error("Failed to submit patient:", error);
+    });
+  
 
   return (
     <div className="flex flex-col w-full gap-4 p-4 ">
