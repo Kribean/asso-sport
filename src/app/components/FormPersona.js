@@ -25,7 +25,8 @@ const FormPersona = ({
   setLieu,
   telephone,
   setTelephone,
-  dataR
+  dataR,
+  setIdPatient
 }) => {
 
   return (
@@ -60,6 +61,7 @@ const FormPersona = ({
         setLieu={setLieu}
         telephone={telephone}
         setTelephone={setTelephone}
+        setIdPatient={setIdPatient}
       />
     </div>
   );

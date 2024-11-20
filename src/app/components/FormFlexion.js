@@ -4,7 +4,7 @@ import data from '../data/json/second_test.json'
 import NoteResult from './NoteResult';
 
 
-function FormFlexion({gender,is2Validated, setIs2Validated,autor2,setAutor2,description, setDescription}) {
+function FormFlexion({idPatient,gender,is2Validated, setIs2Validated,autor2,setAutor2,description, setDescription,handleUpdatePat,firstnameAcc}) {
   const [note, setNote] = useState(null);
 
   const filteredDescriptions = data
@@ -18,6 +18,12 @@ function FormFlexion({gender,is2Validated, setIs2Validated,autor2,setAutor2,desc
     setNote(selectedNote);
   };
 
+  const handleValid =(dt)=>{
+
+    handleUpdatePat(dt)
+    .then(()=>{setAutor2(firstnameAcc);setIs2Validated(true)})
+    .catch(error=>console.log(error))
+  } 
   return (
 <div className="collapse gap-2 items-center bg-white border border-gray-200 rounded-lg shadow p-2">
   <input type="checkbox" className="peer" />
@@ -57,7 +63,7 @@ function FormFlexion({gender,is2Validated, setIs2Validated,autor2,setAutor2,desc
       <div className="flex flex-col items-center justify-center w-full text-xs lg:text-lg my-4">
       {note !== null && <NoteResult note={note} />}
     </div>
-   {is2Validated&&autor2? <button className="btn btn-warning">Modifier et Valider le résultat</button>:<button className="btn btn-success">Valider le résultat</button>}  
+   {is2Validated&&autor2? <button className="btn btn-warning" onClick={()=>handleValid({is2Validated,autor2,description,id:idPatient})}>Modifier et Valider le résultat</button>:<button className="btn btn-success" onClick={()=>handleValid({is2Validated,autor2,description,id:idPatient})}>Valider le résultat</button>}  
     </>}
 
   </div>

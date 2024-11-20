@@ -16,7 +16,7 @@ import NbrTest from "./components/NbrTest";
 
 export default function Home() {
   const [idPatient, setIdPatient] = useState("");
-  const [dataR,setDataR]=useState([])
+  const [dataR, setDataR] = useState([]);
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
   const [gender, setGender] = useState("");
@@ -32,15 +32,22 @@ export default function Home() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [createdAt, setCreatedAt] = useState();
   const [firstnameAcc, setFirstnameAcc] = useState("");
   const [lastnameAcc, setLastnameAcc] = useState("");
   const [isConnected, setIsconnected] = useState(false);
   const [isPatientChoose, setIsPatientChoose] = useState(false);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   //param santé
-  const [etatSante,setEtatSante]=useState({hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0})
-  const [lieu,setLieu]=useState("")
-  const [telephone,setTelephone]=useState("")
+  const [etatSante, setEtatSante] = useState({
+    hypertension: false,
+    diabete: false,
+    douleur: false,
+    pathoOuhandi: false,
+    etatForme: 0,
+  });
+  const [lieu, setLieu] = useState("");
+  const [telephone, setTelephone] = useState("");
   //validation des 5 test
   const [is1Validated, setIs1Validated] = useState(true);
   const [is2Validated, setIs2Validated] = useState(true);
@@ -52,37 +59,38 @@ export default function Home() {
   const [autor3, setAutor3] = useState("");
   const [autor4, setAutor4] = useState("");
   const [autor5, setAutor5] = useState("");
-  const [nbrTestVal,setNbrTestVal]=useState(0)
+  const [nbrTestVal, setNbrTestVal] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch("/api/patient")
-    .then((data)=>{
-      if(!data.ok)
-      {
-        throw Error("cannot fetch")
-      }
-      return data.json()
-    })
-    .then((res)=>{
-      console.log("ya: ",res)
-      setDataR(res)
-    })
-    .catch(error=>console.log(error))
-  },[])
+      .then((data) => {
+        if (!data.ok) {
+          throw Error("cannot fetch");
+        }
+        return data.json();
+      })
+      .then((res) => {
+        console.log("ya: ", res);
+        setDataR(res);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const convertFct = (x) => {
+      return x ? 1 : 0;
+    };
+    const val =
+      convertFct(is1Validated) +
+      convertFct(is2Validated) +
+      convertFct(is3Validated) +
+      convertFct(is4Validated) +
+      convertFct(is5Validated);
+    setNbrTestVal(val);
+  }, [is1Validated, is2Validated, is3Validated, is4Validated, is5Validated]);
 
-    const convertFct = (x)=>{
-      return x?1:0
-    }
-    const val = convertFct(is1Validated)+convertFct(is2Validated)+convertFct(is3Validated)+convertFct(is4Validated)+convertFct(is5Validated)
-setNbrTestVal(val)
-  },[is1Validated,is2Validated,is3Validated,is4Validated,is5Validated])
-
-  const handleSendFormToClient = ()=>{
-
-  }
-//reset le formulaire
+  const handleSendFormToClient = () => {};
+  //reset le formulaire
   const resetForm = () => {
     setAge(0);
     setWeight(0);
@@ -110,91 +118,110 @@ setNbrTestVal(val)
     setAutor3("");
     setAutor4("");
     setAutor5("");
-    setDescription('');
-    setEtatSante({hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
+    setDescription("");
+    setEtatSante({
+      hypertension: false,
+      diabete: false,
+      douleur: false,
+      pathoOuhandi: false,
+      etatForme: 0,
+    });
     setLieu("");
     setTelephone("");
-    setIdPatient("")
+    setIdPatient("");
+    setCreatedAt(null);
   };
-const fillFormASAP = (
-  ag, // âge
-  wg, // poids
-  gd,
-  ind3,
-  ind4,
-  ind5,
-  sc4,
-  dist5,
-  hg,
-  fnam,
-  lnam,
-  ema,
-  isptch,
-  dynW1,
-  dynW2,
-  is1V,
-  is2V,
-  is3V,
-  is4V,
-  is5V,
-  aut1,
-  aut2,
-  aut3,
-  aut4,
-  aut5,
-  descp,
-  etatSan,
-  lieu,
-  tel,
-  id
-) => {
-
-  setAge(ag??0);
-  setWeight(wg??0);
-  setGender(gd??"");
-  setIndiceThird(ind3??-1);
-  setIndiceFour(ind4??-1);
-  setIndiceFifth(ind5??-1);
-  setScoreFourth(sc4??"");
-  setDistanceFifth(dist5??0);
-  setHeight(hg??0);
-  setFirstname(fnam??"");
-  setLastname(lnam??"");
-  setEmail(ema??"");
-  setIsPatientChoose(isptch??false);
-  setDynaWeight1(dynW1??-1);
-  setDynaWeight2(dynW2??-1);
-  setIs1Validated(is1V??false);
-  setIs2Validated(is2V??false);
-  setIs3Validated(is3V??false);
-  setIs4Validated(is4V??false);
-  setIs5Validated(is5V??false);
-  setAutor1(aut1??"");
-  setAutor2(aut2??"");
-  setAutor3(aut3??"");
-  setAutor4(aut4??"");
-  setAutor5(aut5??"");
-  setDescription(descp??'');
-  setEtatSante(etatSan??{hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
-  setLieu(lieu??"");
-  setTelephone(tel??"");
-  setIdPatient(id??"");
-};
+  const fillFormASAP = (
+    ag, // âge
+    wg, // poids
+    gd,
+    ind3,
+    ind4,
+    ind5,
+    sc4,
+    dist5,
+    hg,
+    fnam,
+    lnam,
+    ema,
+    isptch,
+    dynW1,
+    dynW2,
+    is1V,
+    is2V,
+    is3V,
+    is4V,
+    is5V,
+    aut1,
+    aut2,
+    aut3,
+    aut4,
+    aut5,
+    descp,
+    etatSan,
+    lieu,
+    tel,
+    id,
+    createdat
+  ) => {
+    setAge(ag ?? 0);
+    setWeight(wg ?? 0);
+    setGender(gd ?? "");
+    setIndiceThird(ind3 ?? -1);
+    setIndiceFour(ind4 ?? -1);
+    setIndiceFifth(ind5 ?? -1);
+    setScoreFourth(sc4 ?? "");
+    setDistanceFifth(dist5 ?? 0);
+    setHeight(hg ?? 0);
+    setFirstname(fnam ?? "");
+    setLastname(lnam ?? "");
+    setEmail(ema ?? "");
+    setIsPatientChoose(isptch ?? false);
+    setDynaWeight1(dynW1 ?? -1);
+    setDynaWeight2(dynW2 ?? -1);
+    setIs1Validated(is1V ?? false);
+    setIs2Validated(is2V ?? false);
+    setIs3Validated(is3V ?? false);
+    setIs4Validated(is4V ?? false);
+    setIs5Validated(is5V ?? false);
+    setAutor1(aut1 ?? "");
+    setAutor2(aut2 ?? "");
+    setAutor3(aut3 ?? "");
+    setAutor4(aut4 ?? "");
+    setAutor5(aut5 ?? "");
+    setDescription(descp ?? "");
+    setEtatSante(
+      etatSan ?? {
+        hypertension: false,
+        diabete: false,
+        douleur: false,
+        pathoOuhandi: false,
+        etatForme: 0,
+      }
+    );
+    setLieu(lieu ?? "");
+    setTelephone(tel ?? "");
+    setIdPatient(id ?? "");
+    setCreatedAt(createdat ?? null);
+  };
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
       return el.gender === gender;
     });
+    console.log(dataSet,"faya bun")
     dataSet = dataSet.filter((el) => {
       return (el.age_min ?? -1) <= age && age <= (el.age_max ?? 1000);
     });
-    const dynaWeightMean=(parseFloat(dynaWeight1)+parseFloat(dynaWeight2))/2
-    console.log(dynaWeightMean,dynaWeight1,dynaWeight2)
+    const dynaWeightMean =
+      (parseFloat(dynaWeight1) + parseFloat(dynaWeight2)) / 2;
+    console.log(dataSet,dynaWeightMean, dynaWeight1, dynaWeight2,"badama",age,gender);
     dataSet = dataSet.filter((el) => {
       return (
-        (el.weight_min ?? -1) <= dynaWeightMean && dynaWeightMean <= (el.weight_max ?? 1000)
+        (el.weight_min ?? -1) <= dynaWeightMean &&
+        dynaWeightMean <= (el.weight_max ?? 1000)
       );
     });
-    console.log("third: ",dataSet)
+    console.log("third: ", dataSet);
     if (dataSet?.length === 1) {
       setIndiceThird(dataSet[0]?.indice);
     }
@@ -206,22 +233,23 @@ const fillFormASAP = (
       return el.gender == gender;
     });
     setListFourthScore(listSc?.map((e) => e.score));
-  }, [age, weight, gender,dynaWeight1,dynaWeight2]);
+  }, [age, weight, gender, dynaWeight1, dynaWeight2]);
 
-  //pour le test 4 
-  useEffect(()=>{
+  //pour le test 4
+  useEffect(() => {
     let listCal = dataFourth.filter((el) => {
       return (el.age_min ?? -1) <= age && age <= (el.age_max ?? 1000);
     });
     listCal = listCal.filter((el) => {
       return el.gender == gender;
     });
-    listCal = listCal.filter((el)=>{return el.score==scoreFourth})
-    if(listCal.length===1)
-    {
-      setIndiceFour(listCal[0].indice)
+    listCal = listCal.filter((el) => {
+      return el.score == scoreFourth;
+    });
+    if (listCal.length === 1) {
+      setIndiceFour(listCal[0].indice);
     }
-  },[scoreFourth])
+  }, [scoreFourth]);
   //fin pour le test 4
   useEffect(() => {
     let dataSixMin = dataFifth.filter((el) => {
@@ -241,7 +269,7 @@ const fillFormASAP = (
 
     if (dataSixMin?.length === 1) {
       setIndiceFifth(dataSixMin[0]?.indice);
-    }else if(dataSixMin?.length === 0){
+    } else if (dataSixMin?.length === 0) {
       setIndiceFifth(1);
     }
   }, [distanceFifth]);
@@ -263,6 +291,30 @@ const fillFormASAP = (
     }
   }, []);
 
+  const handleUpdatePat = async (myUpdt) => {
+    if (myUpdt?.id) {
+      fetch("/api/patient", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id:myUpdt?.id,
+          ...myUpdt,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to update patient");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Patient updated successfully:", data);
+        })
+        .catch((error) => console.error("Error updating patient:", error));
+    }
+  };
   return (
     <div className="flex flex-col w-full items-center justify-items-center min-h-screen gap-4 ">
       {!isConnected ? (
@@ -280,19 +332,50 @@ const fillFormASAP = (
             {isPatientChoose ? (
               <>
                 <CardPatient
-                  lastnamePrim={lastname}
-                  firstnamePrim={firstname}
-                  emailPrim={email}
-                  genderPrim={gender}
-                  heightPrim={height}
+                  idPrim={idPatient}
+                  agePrim={age}
                   weightPrim={weight}
+                  genderPrim={gender}
+                  indiceThirdPrim={indiceThird}
+                  indiceFourPrim={indiceFour}
+                  indiceFifthPrim={indiceFifth}
+                  scoreFourthPrim={scoreFourth}
+                  distanceFifthPrim={distanceFifth}
+                  heightPrim={height}
+                  firstnamePrim={firstname}
+                  lastnamePrim={lastname}
+                  emailPrim={email}
+                  dynaWeight1Prim={dynaWeight1}
+                  dynaWeight2Prim={dynaWeight2}
+                  is1ValidatedPrim={is1Validated}
+                  is2ValidatedPrim={is2Validated}
+                  is3ValidatedPrim={is3Validated}
+                  is4ValidatedPrim={is4Validated}
+                  is5ValidatedPrim={is5Validated}
+                  autor1Prim={autor1}
+                  autor2Prim={autor2}
+                  autor3Prim={autor3}
+                  autor4Prim={autor4}
+                  autor5Prim={autor5}
+                  descriptionPrim={description}
+                  telephonePrim={telephone}
+                  lieuPrim={lieu}
+                  hypertensionPrim={etatSante?.hypertension}
+                  diabetePrim={etatSante?.diabete}
+                  douleurPrim={etatSante?.douleur}
+                  pathoOuhandiPrim={etatSante?.pathoOuhandi}
+                  etatFormePrim={etatSante?.etatForme}
+                  createdAtPrim={createdAt}
                   isPatientChoose={isPatientChoose}
                   setIsPatientChoose={setIsPatientChoose}
                   fillFormASAP={() => {}}
                   resetForm={resetForm}
                 />
                 <div className="flex flex-col items-center justify-center m-2 gap-4">
-                  <NbrTest handleSendFormToClient={handleSendFormToClient} nbrTestVal={nbrTestVal}/>
+                  <NbrTest
+                    handleSendFormToClient={handleSendFormToClient}
+                    nbrTestVal={nbrTestVal}
+                  />
                   <IMCCompo weight={weight} height={height} />
                   <FormFlexion
                     is2Validated={is2Validated}
@@ -302,6 +385,9 @@ const fillFormASAP = (
                     gender={gender}
                     description={description}
                     setDescription={setDescription}
+                    handleUpdatePat={handleUpdatePat}
+                    idPatient={idPatient}
+                    firstnameAcc={firstnameAcc}
                   />
                   <FormForceIso
                     is3Validated={is3Validated}
@@ -313,6 +399,9 @@ const fillFormASAP = (
                     setDynaWeight1={setDynaWeight1}
                     dynaWeight2={dynaWeight2}
                     setDynaWeight2={setDynaWeight2}
+                    firstnameAcc={firstnameAcc}
+                    handleUpdatePat={handleUpdatePat}
+                    idPatient={idPatient}
                   />
                   <FormFourthDebout
                     listFourthScore={listFourthScore}
@@ -323,8 +412,8 @@ const fillFormASAP = (
                     autor4={autor4}
                   />
                   <FormFifthSixMin
-                  is5Validated={is5Validated}
-                  autor5={autor5}
+                    is5Validated={is5Validated}
+                    autor5={autor5}
                     indiceFifth={indiceFifth}
                     distanceFifth={distanceFifth}
                     setDistanceFifth={setDistanceFifth}
@@ -357,6 +446,7 @@ const fillFormASAP = (
                 telephone={telephone}
                 setTelephone={setTelephone}
                 dataR={dataR}
+                setIdPatient={setIdPatient}
               />
             )}
           </main>

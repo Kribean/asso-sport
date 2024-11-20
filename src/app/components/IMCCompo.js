@@ -1,6 +1,6 @@
 const IMCCompo=({weight,height})=>{
-
-    const imcVar = weight/(height*height)*10000;
+    console.log(weight,height,"panam")
+    const imcVar = parseFloat(weight)/(parseFloat(height)*parseFloat(height))*10000;
 
     return(
         <div className="flex flex-col bg-neutral text-neutral-content w-36 h-36 rounded-lg items-center justify-center">

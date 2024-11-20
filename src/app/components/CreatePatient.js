@@ -25,6 +25,7 @@ const CreatePatient = ({
   setLieu,
   telephone,
   setTelephone,
+  setIdPatient
 }) => {
   const [hypertension,setHypertension]=useState(false)
   const [diabete,setDiabete]=useState(false)
@@ -67,6 +68,7 @@ const CreatePatient = ({
           return res.json(); // Parse seulement si res.ok
         })
         .then((data) => {
+          setIdPatient(data.id)
           setPatientExist(false);
           setIsPatientChoose(true);
         })

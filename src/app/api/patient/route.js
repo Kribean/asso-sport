@@ -82,4 +82,41 @@ export async function POST(req) {
         { status: 500 }
       );
     }
+  };
+
+  export async function PUT(req) {
+    try {
+      const body = await req.json();
+  
+      const { id, ...updateData } = body;
+  
+      // Vérifie si un ID est fourni
+      if (!id) {
+        return NextResponse.json(
+          { error: "ID du patient requis pour la mise à jour." },
+          { status: 400 }
+        );
+      }
+      // Si aucun champ valide n'est fourni
+      if (Object.keys(updateData).length === 0) {
+        return NextResponse.json(
+          { error: "Aucun champ valide à mettre à jour." },
+          { status: 400 }
+        );
+      }
+  
+      // Mise à jour dans la base de données
+      const updatedPatient = await prisma.Patient.update({
+        where: { id },
+        data: updateData,
+      });
+  
+      return NextResponse.json(updatedPatient, { status: 200 });
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json(
+        { error: "Erreur lors de la mise à jour du patient." },
+        { status: 500 }
+      );
+    }
   }
