@@ -64,7 +64,8 @@ const handleChooseUser=()=>{
         descp,
         etatSan,
         lieu,
-        tel
+        tel,
+        id
       )
     setIsPatientChoose(true)
 }

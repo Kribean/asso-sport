@@ -24,15 +24,10 @@ const FormPersona = ({
   lieu,
   setLieu,
   telephone,
-  setTelephone
+  setTelephone,
+  dataR
 }) => {
-  const dataR = [
-    { lastname: "jjj", firstname: "pppp", email: "ramael.bruno@gmail.com" },
-    { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-    { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-    { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-    { lastname: "jjj", firstname: "pppp", email: "oooooo" },
-  ];
+
   return (
     <div className="flex flex-col w-full">
       <ListAllPatients

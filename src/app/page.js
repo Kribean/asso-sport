@@ -15,6 +15,8 @@ import IMCCompo from "./components/IMCCompo";
 import NbrTest from "./components/NbrTest";
 
 export default function Home() {
+  const [idPatient, setIdPatient] = useState("");
+  const [dataR,setDataR]=useState([])
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
   const [gender, setGender] = useState("");
@@ -51,6 +53,22 @@ export default function Home() {
   const [autor4, setAutor4] = useState("");
   const [autor5, setAutor5] = useState("");
   const [nbrTestVal,setNbrTestVal]=useState(0)
+
+  useEffect(()=>{
+    fetch("/api/patient")
+    .then((data)=>{
+      if(!data.ok)
+      {
+        throw Error("cannot fetch")
+      }
+      return data.json()
+    })
+    .then((res)=>{
+      console.log("ya: ",res)
+      setDataR(res)
+    })
+    .catch(error=>console.log(error))
+  },[])
 
   useEffect(()=>{
 
@@ -96,6 +114,7 @@ setNbrTestVal(val)
     setEtatSante({hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
     setLieu("");
     setTelephone("");
+    setIdPatient("")
   };
 const fillFormASAP = (
   ag, // âge
@@ -126,7 +145,8 @@ const fillFormASAP = (
   descp,
   etatSan,
   lieu,
-  tel
+  tel,
+  id
 ) => {
 
   setAge(ag??0);
@@ -158,6 +178,7 @@ const fillFormASAP = (
   setEtatSante(etatSan??{hypertension:false,diabete:false,douleur:false,pathoOuhandi:false,etatForme:0});
   setLieu(lieu??"");
   setTelephone(tel??"");
+  setIdPatient(id??"");
 };
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
@@ -335,6 +356,7 @@ const fillFormASAP = (
                 setLieu={setLieu}
                 telephone={telephone}
                 setTelephone={setTelephone}
+                dataR={dataR}
               />
             )}
           </main>

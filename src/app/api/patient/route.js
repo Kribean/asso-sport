@@ -3,6 +3,24 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+export async function GET(req) {
+    try{
+        const patients = await prisma.Patient.findMany()
+        const patientsTab = patients?.map((e)=>{
+            const { etatForme,hypertension,diabete,douleur, pathoOuhandi,...elements}=e
+            return {...elements,etatSante:{hypertension,diabete,douleur,pathoOuhandi,etatForme}}
+        })
+        return NextResponse.json(patientsTab, { status: 200 });
+    }catch(error)
+    {
+       return NextResponse.json(
+            { error:error,hello: "An issue occurred while fetching patients" },
+            { status: 500 }
+          );
+    }
+
+}
+
 export async function POST(req) {
     try {
   
@@ -56,7 +74,7 @@ export async function POST(req) {
         },
       });
   
-      return NextResponse.json(newPatient, { status: 201 });
+      return NextResponse.json({idPatient:newPatient.id}, { status: 201 });
     } catch (error) {
 
       return NextResponse.json(

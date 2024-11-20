@@ -11,9 +11,9 @@ const ListAllPatients = ({isPatientChoose,setIsPatientChoose,fillFormASAP,dataR}
   
       setDataRaw(dataR)
       setData(dataR)
-      console.log("oooo",data)
+      console.log("oooo",dataR)
 
-  }, []);
+  }, [dataR]);
 
   const handleFilter = (x)=>{
 
