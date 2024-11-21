@@ -410,6 +410,11 @@ export default function Home() {
                     indiceFour={indiceFour}
                     is4Validated={is4Validated}
                     autor4={autor4}
+                    setAutor4={setAutor4}
+                    handleUpdatePat={handleUpdatePat}
+                    firstnameAcc={firstnameAcc}
+                    idPatient={idPatient}
+                    setIs4Validated={setIs4Validated}
                   />
                   <FormFifthSixMin
                     is5Validated={is5Validated}

@@ -63,7 +63,7 @@ function FormFlexion({idPatient,gender,is2Validated, setIs2Validated,autor2,setA
       <div className="flex flex-col items-center justify-center w-full text-xs lg:text-lg my-4">
       {note !== null && <NoteResult note={note} />}
     </div>
-   {is2Validated&&autor2? <button className="btn btn-warning" onClick={()=>handleValid({is2Validated,autor2,description,id:idPatient})}>Modifier et Valider le résultat</button>:<button className="btn btn-success" onClick={()=>handleValid({is2Validated,autor2,description,id:idPatient})}>Valider le résultat</button>}  
+   {is2Validated&&autor2? <button className="btn btn-warning" onClick={()=>handleValid({is2Validated:true,autor2:firstnameAcc,description,id:idPatient})}>Modifier et Valider le résultat</button>:<button className="btn btn-success" onClick={()=>handleValid({is2Validated:true,autor2:firstnameAcc,description,id:idPatient})}>Valider le résultat</button>}  
     </>}
 
   </div>

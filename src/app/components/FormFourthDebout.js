@@ -1,7 +1,15 @@
 import NoteResult from "./NoteResult";
 
-const FormFourthDebout = ({listFourthScore,scoreFourth,setScoreFourth,indiceFour,is4Validated,autor4})=>{
+const FormFourthDebout = ({listFourthScore,scoreFourth,setScoreFourth,indiceFour,is4Validated,autor4,setIs4Validated,setAutor4,handleUpdatePat,firstnameAcc,idPatient})=>{
+  
+  console.log("prenom: ",firstnameAcc)
+  
+  const handleValid =(dt)=>{
 
+    (indiceFour>0)&&handleUpdatePat(dt)
+    .then(()=>{setAutor4(firstnameAcc);setIs4Validated(true)})
+    .catch(error=>console.log(error))
+  } 
     return(
       <div  className='collapse gap-2 items-center bg-white border border-gray-200 rounded-lg shadow p-2'>
         <input type="checkbox" className="peer" />
@@ -21,7 +29,7 @@ const FormFourthDebout = ({listFourthScore,scoreFourth,setScoreFourth,indiceFour
         </select>
       
       {indiceFour>0 && <NoteResult note={indiceFour} />}
-      {scoreFourth>1&&<button className="btn btn-success">Valider le résultat</button>}
+      {scoreFourth>1&&<button onClick={()=>handleValid({is4Validated:true,autor4:firstnameAcc,indiceFour,scoreFourth,id:idPatient})} className="btn btn-success">Valider le résultat</button>}
       </div>
         </div>
     )
