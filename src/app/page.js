@@ -422,6 +422,11 @@ export default function Home() {
                     indiceFifth={indiceFifth}
                     distanceFifth={distanceFifth}
                     setDistanceFifth={setDistanceFifth}
+                    setAutor5={setAutor5}
+                    handleUpdatePat={handleUpdatePat}
+                    firstnameAcc={firstnameAcc}
+                    idPatient={idPatient}
+                    setIs5Validated={setIs5Validated}
                   />
                 </div>
               </>

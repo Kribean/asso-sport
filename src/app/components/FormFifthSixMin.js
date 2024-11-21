@@ -1,7 +1,13 @@
 import NoteResult from "./NoteResult";
 
-const FormFifthSixMin= ({distanceFifth,setDistanceFifth,indiceFifth,is5Validated,autor5})=>{
+const FormFifthSixMin= ({distanceFifth,setDistanceFifth,indiceFifth,is5Validated,autor5,setAutor5,handleUpdatePat,firstnameAcc,idPatient,setIs5Validated})=>{
+  
+    const handleValid =(dt)=>{
 
+        (distanceFifth>1)&&handleUpdatePat(dt)
+        .then(()=>{setAutor5(firstnameAcc);setIs5Validated(true)})
+        .catch(error=>console.log(error))
+      } 
     return(
         <div  className='collapse gap-2 items-center bg-white border border-gray-200 rounded-lg shadow p-2'>
          <input type="checkbox" className="peer" />
@@ -16,10 +22,13 @@ const FormFifthSixMin= ({distanceFifth,setDistanceFifth,indiceFifth,is5Validated
          
             <input className="input input-bordered flex items-center gap-2" type="number" value={distanceFifth} onChange={(e)=>{return setDistanceFifth(e.target.value)}}/>
             {indiceFifth>0 && <NoteResult note={indiceFifth} />}
-            {distanceFifth>1&&<button className="btn btn-success">Valider le résultat</button>}
+            {distanceFifth>1&&<button
+             onClick={()=>handleValid({is5Validated:true,autor5:firstnameAcc,distanceFifth:parseFloat(distanceFifth),id:idPatient})}
+            className="btn btn-success">Valider le résultat</button>}
 </div>
         </div>
     )
 }
+
 
 export default FormFifthSixMin;

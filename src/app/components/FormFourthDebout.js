@@ -1,9 +1,7 @@
 import NoteResult from "./NoteResult";
 
 const FormFourthDebout = ({listFourthScore,scoreFourth,setScoreFourth,indiceFour,is4Validated,autor4,setIs4Validated,setAutor4,handleUpdatePat,firstnameAcc,idPatient})=>{
-  
-  console.log("prenom: ",firstnameAcc)
-  
+
   const handleValid =(dt)=>{
 
     (indiceFour>0)&&handleUpdatePat(dt)
