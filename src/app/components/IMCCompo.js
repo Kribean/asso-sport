@@ -1,5 +1,5 @@
 const IMCCompo=({weight,height})=>{
-    console.log(weight,height,"panam")
+
     const imcVar = parseFloat(weight)/(parseFloat(height)*parseFloat(height))*10000;
 
     return(

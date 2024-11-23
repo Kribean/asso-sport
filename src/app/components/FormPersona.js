@@ -19,8 +19,16 @@ const FormPersona = ({
   isPatientChoose,
   setIsPatientChoose,
   fillFormASAP,
-  etatSante,
-  setEtatSante,
+  hypertension,
+  diabete,
+  douleur,
+  pathoOuhandi,
+  etatForme,
+  setHypertension,
+  setDiabete,
+  setDouleur,
+  setPathoOuhandi,
+  setEtatForme,
   lieu,
   setLieu,
   telephone,
@@ -55,8 +63,16 @@ const FormPersona = ({
         dataR={dataR}
         isPatientChoose={isPatientChoose}
         setIsPatientChoose={setIsPatientChoose}
-        etatSante={etatSante}
-        setEtatSante={setEtatSante}
+        hypertension={hypertension}
+        diabete={diabete}
+        douleur={douleur}
+        pathoOuhandi={pathoOuhandi}
+        etatForme={etatForme}
+        setHypertension={setHypertension}
+        setDiabete={setDiabete}
+        setDouleur={setDouleur}
+        setPathoOuhandi={setPathoOuhandi}
+        setEtatForme={setEtatForme}
         lieu={lieu}
         setLieu={setLieu}
         telephone={telephone}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CardPatient from "./CardPatient";
 
 const ListAllPatients = ({isPatientChoose,setIsPatientChoose,fillFormASAP,dataR}) => {
+  console.log(dataR,"dattttt")
     const [filt,setFilt]=useState("")
   const [data, setData] = useState([]);
   const [dataRaw, setDataRaw] = useState([]);

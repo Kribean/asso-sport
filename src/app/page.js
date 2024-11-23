@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import FormFlexion from "./components/FormFlexion";
 import FormForceIso from "./components/FormForceIso";
 import FormPersona from "./components/FormPersona";
+import dataFirst from "./data/json/first_equilibre.json";
 import dataThird from "./data/json/third_force_iso.json";
 import dataFourth from "./data/json/fourth_test_debout.json";
 import dataFifth from "./data/json/fifth_6_min.json";
@@ -13,13 +14,17 @@ import Navbar from "./components/Navbar";
 import CardPatient from "./components/CardPatient";
 import IMCCompo from "./components/IMCCompo";
 import NbrTest from "./components/NbrTest";
+import FormEquilibreJa from "./components/FormEquilibreJa";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [idPatient, setIdPatient] = useState("");
   const [dataR, setDataR] = useState([]);
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
   const [gender, setGender] = useState("");
+  const [indiceFirst, setIndiceFirst] = useState(-1);
   const [indiceThird, setIndiceThird] = useState(-1);
   const [indiceFour, setIndiceFour] = useState(-1);
   const [indiceFifth, setIndiceFifth] = useState(-1);
@@ -38,14 +43,14 @@ export default function Home() {
   const [isConnected, setIsconnected] = useState(false);
   const [isPatientChoose, setIsPatientChoose] = useState(false);
   const [description, setDescription] = useState("");
+  const [timeFirst, setTimeFirst] = useState(0);
   //param santé
-  const [etatSante, setEtatSante] = useState({
-    hypertension: false,
-    diabete: false,
-    douleur: false,
-    pathoOuhandi: false,
-    etatForme: 0,
-  });
+  const [hypertension, setHypertension] = useState(false);
+  const [diabete, setDiabete] = useState(false);
+  const [douleur, setDouleur] = useState(false);
+  const [pathoOuhandi, setPathoOuhandi] = useState("");
+  const [etatForme, setEtatForme] = useState(0);
+
   const [lieu, setLieu] = useState("");
   const [telephone, setTelephone] = useState("");
   //validation des 5 test
@@ -61,6 +66,77 @@ export default function Home() {
   const [autor5, setAutor5] = useState("");
   const [nbrTestVal, setNbrTestVal] = useState(0);
 
+  const handleFinalize = async () => {
+    setIsLoading(true);
+    setSuccess(false);
+
+    try {
+      // Remplacez par l'URL de votre webhook Make
+      const webhookUrl =
+        "https://hook.eu2.make.com/4hlu6npiigx9sscidsgyfli87x38qi3w";
+
+      // Envoi des données via fetch
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idPatient,
+          age,
+          weight,
+          gender,
+          indiceFirst,
+          indiceThird,
+          indiceFour,
+          indiceFifth,
+          scoreFourth,
+          distanceFifth,
+          timeFirst,
+          height,
+          firstname,
+          lastname,
+          email,
+          dynaWeight1,
+          dynaWeight2,
+          is1Validated,
+          is2Validated,
+          is3Validated,
+          is4Validated,
+          is5Validated,
+          autor1,
+          autor2,
+          autor3,
+          autor4,
+          autor5,
+          description,
+          telephone,
+          lieu,
+          hypertension: hypertension,
+          diabete: diabete,
+          douleur: douleur,
+          pathoOuhandi: pathoOuhandi,
+          etatForme: etatForme,
+          createdAt,
+        }),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        console.log("Données envoyées avec succès !");
+      } else {
+        console.error(
+          "Erreur lors de l'envoi des données :",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetch("/api/patient")
       .then((data) => {
@@ -70,7 +146,6 @@ export default function Home() {
         return data.json();
       })
       .then((res) => {
-        console.log("ya: ", res);
         setDataR(res);
       })
       .catch((error) => console.log(error));
@@ -101,6 +176,7 @@ export default function Home() {
     setListFourthScore([]);
     setScoreFourth("");
     setDistanceFifth(0);
+    setTimeFirst(0);
     setHeight(0);
     setFirstname("");
     setLastname("");
@@ -119,13 +195,11 @@ export default function Home() {
     setAutor4("");
     setAutor5("");
     setDescription("");
-    setEtatSante({
-      hypertension: false,
-      diabete: false,
-      douleur: false,
-      pathoOuhandi: false,
-      etatForme: 0,
-    });
+    setHypertension(false);
+    setDiabete(false);
+    setDouleur(false);
+    setPathoOuhandi("");
+    setEtatForme(0);
     setLieu("");
     setTelephone("");
     setIdPatient("");
@@ -158,11 +232,16 @@ export default function Home() {
     aut4,
     aut5,
     descp,
-    etatSan,
+    hypertension78,
+    diabete78,
+    douleur78,
+    pathoOuhandi78,
+    etatForme78,
     lieu,
     tel,
     id,
-    createdat
+    createdat,
+    timeF
   ) => {
     setAge(ag ?? 0);
     setWeight(wg ?? 0);
@@ -190,38 +269,33 @@ export default function Home() {
     setAutor4(aut4 ?? "");
     setAutor5(aut5 ?? "");
     setDescription(descp ?? "");
-    setEtatSante(
-      etatSan ?? {
-        hypertension: false,
-        diabete: false,
-        douleur: false,
-        pathoOuhandi: false,
-        etatForme: 0,
-      }
-    );
+    setHypertension(hypertension78 ?? false);
+    setDiabete(diabete78 ?? false);
+    setDouleur(douleur78 ?? false);
+    setPathoOuhandi(pathoOuhandi78 ?? "");
+    setEtatForme(etatForme78 ?? "");
     setLieu(lieu ?? "");
     setTelephone(tel ?? "");
     setIdPatient(id ?? "");
     setCreatedAt(createdat ?? null);
+    setTimeFirst(timeF ?? 0);
   };
   useEffect(() => {
     let dataSet = dataThird.filter((el) => {
       return el.gender === gender;
     });
-    console.log(dataSet,"faya bun")
+
     dataSet = dataSet.filter((el) => {
       return (el.age_min ?? -1) <= age && age <= (el.age_max ?? 1000);
     });
     const dynaWeightMean =
       (parseFloat(dynaWeight1) + parseFloat(dynaWeight2)) / 2;
-    console.log(dataSet,dynaWeightMean, dynaWeight1, dynaWeight2,"badama",age,gender);
     dataSet = dataSet.filter((el) => {
       return (
         (el.weight_min ?? -1) <= dynaWeightMean &&
         dynaWeightMean <= (el.weight_max ?? 1000)
       );
     });
-    console.log("third: ", dataSet);
     if (dataSet?.length === 1) {
       setIndiceThird(dataSet[0]?.indice);
     }
@@ -291,6 +365,27 @@ export default function Home() {
     }
   }, []);
 
+  //pour le premier test
+  useEffect(() => {
+    let listFirstTest = dataFirst.filter((el) => {
+      return (el.age_min ?? -1) <= age && age <= (el.age_max ?? 1000);
+    });
+
+    listFirstTest = listFirstTest.filter((el) => {
+      return el.gender == gender;
+    });
+
+    listFirstTest = listFirstTest.filter((el) => {
+      return (
+        (el.time_min ?? -1) <= timeFirst && timeFirst <= (el.time_max ?? 1000)
+      );
+    });
+
+    if (listFirstTest.length === 1) {
+      setIndiceFirst(listFirstTest[0].indice);
+    }
+  }, [timeFirst]);
+
   const handleUpdatePat = async (myUpdt) => {
     if (myUpdt?.id) {
       fetch("/api/patient", {
@@ -299,7 +394,7 @@ export default function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id:myUpdt?.id,
+          id: myUpdt?.id,
           ...myUpdt,
         }),
       })
@@ -310,7 +405,7 @@ export default function Home() {
           return response.json();
         })
         .then((data) => {
-          console.log("Patient updated successfully:", data);
+          console.log("Patient updated successfully");
         })
         .catch((error) => console.error("Error updating patient:", error));
     }
@@ -330,7 +425,24 @@ export default function Home() {
           <Navbar lastnameAcc={lastnameAcc} firstnameAcc={firstnameAcc} />
           <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
             {isPatientChoose ? (
-              <>
+              <div className="flex flex-col gap-2 relative ">
+                {nbrTestVal == 5 && (
+                  <div className="fixed bottom-0 z-50">
+                    {isLoading ? (
+                      <span className="loading loading-bars loading-xs"></span>
+                    ) : (
+                      <button
+                        className="animate-bounce btn btn-success"
+                        onClick={() => {
+                          handleFinalize();
+                        }}
+                      >
+                        Finaliser
+                      </button>
+                    )}
+                    {success && <p>✅ Données envoyées avec succès !</p>}
+                  </div>
+                )}
                 <CardPatient
                   idPrim={idPatient}
                   agePrim={age}
@@ -341,6 +453,7 @@ export default function Home() {
                   indiceFifthPrim={indiceFifth}
                   scoreFourthPrim={scoreFourth}
                   distanceFifthPrim={distanceFifth}
+                  timeFirstPrim={timeFirst}
                   heightPrim={height}
                   firstnamePrim={firstname}
                   lastnamePrim={lastname}
@@ -360,11 +473,11 @@ export default function Home() {
                   descriptionPrim={description}
                   telephonePrim={telephone}
                   lieuPrim={lieu}
-                  hypertensionPrim={etatSante?.hypertension}
-                  diabetePrim={etatSante?.diabete}
-                  douleurPrim={etatSante?.douleur}
-                  pathoOuhandiPrim={etatSante?.pathoOuhandi}
-                  etatFormePrim={etatSante?.etatForme}
+                  hypertensionPrim={hypertension}
+                  diabetePrim={diabete}
+                  douleurPrim={douleur}
+                  pathoOuhandiPrim={pathoOuhandi}
+                  etatFormePrim={etatForme}
                   createdAtPrim={createdAt}
                   isPatientChoose={isPatientChoose}
                   setIsPatientChoose={setIsPatientChoose}
@@ -376,7 +489,20 @@ export default function Home() {
                     handleSendFormToClient={handleSendFormToClient}
                     nbrTestVal={nbrTestVal}
                   />
+
                   <IMCCompo weight={weight} height={height} />
+                  <FormEquilibreJa
+                    indiceFirst={indiceFirst}
+                    autor1={autor1}
+                    setAutor1={setAutor1}
+                    setIs1Validated={setIs1Validated}
+                    handleUpdatePat={handleUpdatePat}
+                    is1Validated={is1Validated}
+                    firstnameAcc={firstnameAcc}
+                    idPatient={idPatient}
+                    timeFirst={timeFirst}
+                    setTimeFirst={setTimeFirst}
+                  />
                   <FormFlexion
                     is2Validated={is2Validated}
                     setIs2Validated={setIs2Validated}
@@ -429,7 +555,7 @@ export default function Home() {
                     setIs5Validated={setIs5Validated}
                   />
                 </div>
-              </>
+              </div>
             ) : (
               <FormPersona
                 email={email}
@@ -449,8 +575,16 @@ export default function Home() {
                 isPatientChoose={isPatientChoose}
                 setIsPatientChoose={setIsPatientChoose}
                 fillFormASAP={fillFormASAP}
-                etatSante={etatSante}
-                setEtatSante={setEtatSante}
+                hypertension={hypertension}
+                diabete={diabete}
+                douleur={douleur}
+                pathoOuhandi={pathoOuhandi}
+                etatForme={etatForme}
+                setHypertension={setHypertension}
+                setDiabete={setDiabete}
+                setDouleur={setDouleur}
+                setPathoOuhandi={setPathoOuhandi}
+                setEtatForme={setEtatForme}
                 lieu={lieu}
                 setLieu={setLieu}
                 telephone={telephone}

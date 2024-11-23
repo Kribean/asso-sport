@@ -37,6 +37,7 @@ const CardPatient = ({
   setIsPatientChoose,
   fillFormASAP,
   resetForm,
+  timeFirstPrim,
 }) => {
   const handleChooseUser = () => {
     //ag,wg,hg,gd,em,fnam,lasnam,indT,indF,distF
@@ -67,18 +68,15 @@ const CardPatient = ({
     const aut4 = autor4Prim;
     const aut5 = autor5Prim;
     const descp = descriptionPrim;
-    const etatSan = {
-      hypertension: hypertensionPrim,
-      diabete: diabetePrim,
-      douleur: douleurPrim,
-      pathoOuhandi: pathoOuhandiPrim,
-      etatForme: etatFormePrim,
-    };
+    const hypertension78 = hypertensionPrim;
+    const diabete78 = diabetePrim;
+    const douleur78 = douleurPrim;
+    const pathoOuhandi78 = pathoOuhandiPrim;
+    const etatForme78 = etatFormePrim;
     const lieu = lieuPrim;
     const tel = telephonePrim;
-    const createdat = createdAtPrim
-
-
+    const createdat = createdAtPrim;
+    const timeF = timeFirstPrim;
 
     fillFormASAP(
       ag, // âge
@@ -107,58 +105,67 @@ const CardPatient = ({
       aut4,
       aut5,
       descp,
-      etatSan,
+      hypertension78,
+      diabete78,
+      douleur78,
+      pathoOuhandi78,
+      etatForme78,
       lieu,
       tel,
       id,
-      createdat
+      createdat,
+      timeF
     );
     setIsPatientChoose(true);
   };
-      // Conversion en objet Date
-const date = new Date(createdAtPrim);
+  // Conversion en objet Date
+  const date = new Date(createdAtPrim);
 
-// Extraction des composants de la date
-const jour = String(date.getDate()).padStart(2, '0'); // Ajoute un zéro au début si nécessaire
-const mois = String(date.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0
-const annee = date.getFullYear();
+  // Extraction des composants de la date
+  const jour = String(date.getDate()).padStart(2, "0"); // Ajoute un zéro au début si nécessaire
+  const mois = String(date.getMonth() + 1).padStart(2, "0"); // Les mois commencent à 0
+  const annee = date.getFullYear();
 
-// Formatage au format jj/mm/yyyy
-const dateFormatee = `${jour}/${mois}/${annee}`;
+  // Formatage au format jj/mm/yyyy
+  const dateFormatee = `${jour}/${mois}/${annee}`;
   const handleChangeUser = () => {
     resetForm();
     setIsPatientChoose(false);
   };
   return (
     <div className="flex flex-col w-full text-xs bg-neutral text-neutral-content justify-between p-4 items-center">
-<div className="flex flex-row">Créé le: {dateFormatee}</div>
-<div className="flex flex-row w-full">
-<div className="flex flex-col gap-2">
-        <p>Nom: {lastnamePrim}</p>
-        <p>Prénom:{firstnamePrim}</p>
-        {isPatientChoose ? (
-          <button className="btn btn-error btn-xs" onClick={handleChangeUser}>
-            Changer d'utilisateur
-          </button>
-        ) : (
-          <button
-            className="btn btn-success btn-xs"
-            onClick={() => {
-              handleChooseUser();
-            }}
-          >
-            Choisir cet utilisateur
-          </button>
-        )}
+      <div className="flex flex-row">Créé le: {dateFormatee}</div>
+      <div className="flex flex-row w-full">
+        <div className="flex flex-col gap-2">
+          <p>Nom: {lastnamePrim}</p>
+          <p>Prénom:{firstnamePrim}</p>
+          {isPatientChoose ? (
+            <button className="btn btn-error btn-xs" onClick={handleChangeUser}>
+              Changer d'utilisateur
+            </button>
+          ) : (
+            <button
+              className="btn btn-success btn-xs"
+              onClick={() => {
+                handleChooseUser();
+              }}
+            >
+              Choisir cet utilisateur
+            </button>
+          )}
+        </div>
+        <div className="flex flex-col w-fit">
+          <p>Email: {emailPrim}</p>
+          <p>Poids: {weightPrim} kg</p>
+          <p>Taille: {heightPrim} cm</p>
+          <p>{genderPrim}</p>
+          <p>Age: {agePrim}</p>
+          <p>Hypertension: {hypertensionPrim?"oui":"non"}</p>
+          <p>Douleur: {douleurPrim?"oui":"non"}</p>
+          <p>Pathologies: {pathoOuhandiPrim}</p>
+          <p>Etat de forme: {etatFormePrim}/10</p>
+        </div>
       </div>
-      <div className="flex flex-col w-fit">
-        <p>Email: {emailPrim}</p>
-        <p>Poids: {weightPrim} kg</p>
-        <p>Taille: {heightPrim} cm</p>
-        <p>{genderPrim}</p>
-        <p>Age: {agePrim}</p>
-      </div>
-</div>
     </div>
   );
 };

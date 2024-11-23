@@ -6,11 +6,11 @@ const prisma = new PrismaClient();
 export async function GET(req) {
     try{
         const patients = await prisma.Patient.findMany()
-        const patientsTab = patients?.map((e)=>{
+        /**const patientsTab = patients?.map((e)=>{
             const { etatForme,hypertension,diabete,douleur, pathoOuhandi,...elements}=e
             return {...elements,etatSante:{hypertension,diabete,douleur,pathoOuhandi,etatForme}}
-        })
-        return NextResponse.json(patientsTab, { status: 200 });
+        })*/
+        return NextResponse.json(patients, { status: 200 });
     }catch(error)
     {
        return NextResponse.json(

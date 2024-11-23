@@ -19,23 +19,30 @@ const CreatePatient = ({
   setLastname,
   setFirstname,
   dataR,
-  etatSante,
-  setEtatSante,
+  hypertension,
+  diabete,
+  douleur,
+  pathoOuhandi,
+  etatForme,
+  setHypertension,
+  setDiabete,
+  setDouleur,
+  setPathoOuhandi,
+  setEtatForme,
   lieu,
   setLieu,
   telephone,
   setTelephone,
   setIdPatient
 }) => {
-  const [hypertension,setHypertension]=useState(false)
-  const [diabete,setDiabete]=useState(false)
-  const [douleur,setDouleur]=useState(false)
-  const [pathoOuhandi,setPathoOuhandi]=useState("")
-  const [etatForme,setEtatForme]=useState("0")
   const [patientExist, setPatientExist] = useState(false);
 
   const handleGenderChange = (e) => {
-    setEtatSante({hypertension,diabete,douleur,pathoOuhandi,etatForme})
+    setHypertension(hypertension);
+    setDiabete(diabete);
+    setDouleur(douleur);
+    setPathoOuhandi(pathoOuhandi);
+    setEtatForme(etatForme);
     setGender(e.target.value);
   };
 
@@ -56,7 +63,7 @@ const CreatePatient = ({
           lastname,
           firstname,
           height,
-          etatSante,
+          etatSante:{hypertension,diabete,douleur,pathoOuhandi,etatForme},
           lieu,
           telephone,
         }),
@@ -197,7 +204,7 @@ const CreatePatient = ({
               onChange={(e)=>{setEtatForme(e.target.value)}}
             >
               <option value="">Sélectionnez</option>
-              <option value="1">0</option>
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

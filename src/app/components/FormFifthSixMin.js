@@ -19,8 +19,12 @@ const FormFifthSixMin= ({distanceFifth,setDistanceFifth,indiceFifth,is5Validated
     </div>
 </div></div>
 <div className="collapse-content flex flex-col gap-4 items-center justify-center"> 
-         
-            <input className="input input-bordered flex items-center gap-2" type="number" value={distanceFifth} onChange={(e)=>{return setDistanceFifth(e.target.value)}}/>
+<p> Le patient a marché: </p>
+           <div className="flex flex-row gap-2 justify-center items-center">
+           
+           <input className="input input-bordered flex items-center gap-2" type="number" value={distanceFifth} onChange={(e)=>{return setDistanceFifth(e.target.value)}}/>
+           <p> mètre</p>
+           </div>
             {indiceFifth>0 && <NoteResult note={indiceFifth} />}
             {distanceFifth>1&&<button
              onClick={()=>handleValid({is5Validated:true,autor5:firstnameAcc,distanceFifth:parseFloat(distanceFifth),id:idPatient})}
